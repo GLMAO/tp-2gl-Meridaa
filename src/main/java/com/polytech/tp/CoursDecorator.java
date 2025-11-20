@@ -8,4 +8,10 @@ public abstract class CoursDecorator implements ICours {
     }
     
     // TODO: Forcer l'implémentation des méthodes de ICours
+    public String getDescription(){
+        return coursDecorated.getDescription();
+    }
+    public double getDuree(){
+        return coursDecorated.getDuree();
+    }
 }

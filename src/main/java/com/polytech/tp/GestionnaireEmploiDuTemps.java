@@ -3,22 +3,22 @@ package com.polytech.tp;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GestionnaireEmploiDuTemps {
+public class GestionnaireEmploiDuTemps implements Subject {
     private List<ICours> listeCours = new ArrayList<>();
     private List<Observer> observateurs = new ArrayList<>();
 
     // Ajouter un observateur
-    public void ajouterObservateur(Observer o) {
+    public void attach(Observer o) {
         observateurs.add(o);
     }
-    // Ajouter un observateur
-    public void supprimerObservateur(Observer o) {
+    // Supprimer un observateur
+    public void detach(Observer o) {
         observateurs.remove(o);
     }
     // Notifier tous les observateurs
-    private void notifierObservateurs(String message){
-        for(Observer o : observateurs){
-            o.update(message):
+    public void notifyObservers(String message) {
+        for (Observer o : observateurs) {
+            o.update(message);
         }
     }
 
@@ -27,7 +27,7 @@ public class GestionnaireEmploiDuTemps {
         // TODO: C'est ici qu'il faudrait notifier les étudiants (Observer pattern)
         String message = "Nouveau cours ajouté : " + cours.getDescription();
         System.out.println(message);
-        notifierObservateurs(message);
+        notifyObservers(message);
     }
 
     public void modifierCours(ICours cours, String messageChangement ) {
@@ -35,11 +35,11 @@ public class GestionnaireEmploiDuTemps {
         // TODO: Notifier les observateurs ici aussi
         String message = "Cours modifié : " + cours.getDescription() + "=> " + messageChangement;
         System.out.println(message);
-        notifierObservateurs(message);
+        notifyObservers(message);
     }
 
     public void setChangement(String message) {
         // TODO Auto-generated method stub
-        notifierObservateurs(message);
+        notifyObservers(message);
     }
 }
